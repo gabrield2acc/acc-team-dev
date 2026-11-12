@@ -1,0 +1,9 @@
+{
+  "name": "acc-team",
+  "version": "0.1.0",
+  "description": "A reusable team of coding agents (architect, developers, integrator, QA, checker, surveyor, release engineer) with the method and scripts to build a new application, continue an existing one, produce bulk work with independent checking, and set up a staging and production deploy pipeline.",
+  "author": {
+    "name": "Gabriel Dima"
+  },
+  "keywords": ["agents", "team", "workflow", "qa", "deploy", "gitops"]
+}

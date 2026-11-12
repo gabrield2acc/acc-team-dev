@@ -1,0 +1,38 @@
+{
+  "project": "my-app",
+  "title": "My App",
+  "sourceRepo": "my-org/my-app",
+  "image": "my-registry-user/my-app",
+  "gitopsRepo": "my-org/my-gitops-repo",
+  "gitopsBranch": "main",
+
+  "port": 8080,
+  "healthPath": "/api/health",
+  "dockerfile": "./Dockerfile",
+
+  "checks": {
+    "node": 22,
+    "commands": ["npm ci", "npm run typecheck", "npm test"]
+  },
+
+  "stateful": { "mountPath": "/data", "storageClass": "longhorn", "runAsUser": 1000 },
+
+  "publicUrlVar": "PUBLIC_URL",
+  "env": { "TRUST_PROXY": "1", "DATA_DIR": "/data" },
+
+  "secretName": "my-app-secrets",
+  "secretKeys": [
+    { "name": "SOME_API_KEY", "staging": "a separate key, so spend is separate", "production": "the production key" },
+    { "name": "STRIPE_SECRET_KEY", "staging": "sandbox, `rk_test_…`", "production": "live, `rk_live_…`", "stagingNote": "Stripe: SANDBOX (test) values only. Live keys never go on staging." }
+  ],
+
+  "ingress": { "className": "traefik", "clusterIssuer": "letsencrypt-prod" },
+  "githubSecrets": { "dockerUser": "DOCKERHUB_USERNAME", "dockerToken": "DOCKERHUB_TOKEN", "gitopsToken": "GITOPS_PAT" },
+  "committer": { "name": "deploy-bot", "email": "deploy-bot@users.noreply.github.com" },
+  "inspectCommand": "kubectl -n {namespace} get pods",
+
+  "environments": {
+    "staging":    { "branch": "staging", "host": "staging.my-app.example.com", "namespace": "my-app-staging", "storage": "2Gi", "memoryLimit": "512Mi" },
+    "production": { "branch": "main",    "host": "my-app.example.com",         "namespace": "my-app",         "storage": "5Gi", "memoryLimit": "768Mi" }
+  }
+}

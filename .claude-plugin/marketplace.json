@@ -1,0 +1,16 @@
+{
+  "name": "acc",
+  "owner": {
+    "name": "Gabriel Dima"
+  },
+  "metadata": {
+    "description": "Gabriel's own plugins."
+  },
+  "plugins": [
+    {
+      "name": "acc-team",
+      "description": "A reusable team of coding agents with the method and scripts to build, continue and ship applications.",
+      "source": "./"
+    }
+  ]
+}

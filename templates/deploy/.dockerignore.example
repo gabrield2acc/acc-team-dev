@@ -1,0 +1,16 @@
+# Never in an image: secrets, local data, and build leftovers.
+.env
+.env.*
+!.env.example
+data/
+**/node_modules/
+**/dist/
+**/coverage/
+.git/
+.claude/
+*.db
+*.db-wal
+*.db-shm
+.DS_Store
+Dockerfile
+.dockerignore

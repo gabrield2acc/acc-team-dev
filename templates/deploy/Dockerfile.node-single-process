@@ -1,0 +1,35 @@
+# Example: one image, one process. A Node server that also serves the built web app, with
+# everything that must survive a restart under /data. Adapt the COPY lines to the project.
+
+FROM node:22-bookworm-slim AS build
+WORKDIR /app
+# Native modules (better-sqlite3, sharp, bcrypt) compile on install: they need Python and a
+# C++ compiler. Only this build stage has them. Drop this block if nothing compiles.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 make g++ \
+ && rm -rf /var/lib/apt/lists/*
+# Dependency layers first, so a code change does not reinstall everything.
+# In a workspace, copy every package.json before "npm ci".
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build && npm prune --omit=dev
+
+FROM node:22-bookworm-slim
+ENV NODE_ENV=production \
+    HOST=0.0.0.0 \
+    PORT=8080 \
+    DATA_DIR=/data
+WORKDIR /app
+# Copy only what runs: the manifest, the pruned dependencies and the build output.
+COPY --from=build /app/package.json ./
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+# The data directory belongs to the unprivileged user the server runs as.
+RUN mkdir -p /data && chown node:node /data
+USER node
+VOLUME /data
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s \
+  CMD node -e "fetch('http://127.0.0.1:8080/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+CMD ["node", "dist/server.js"]
