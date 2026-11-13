@@ -249,7 +249,7 @@ Each unit goes through its own three steps, and units do not wait for each other
 
 ```mermaid
 %%{init: {"flowchart": {"wrappingWidth": 320}}}%%
-flowchart LR
+flowchart TB
   PREP["Lead prepares<br/>does one unit itself as the example,<br/>fixes the shared interface,<br/>splits the rest into units"]
   B["Developer<br/>builds one unit<br/>in its own files"]
   C["Checker<br/>a different agent<br/>works samples by hand,<br/>looks at the output"]
