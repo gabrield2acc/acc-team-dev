@@ -4,8 +4,8 @@
  * No model is called and nothing is changed. It prints each agent the script would start,
  * in order, and the value the script returns.
  *
- *   node scripts/dry-run.mjs workflows/work-round.js
- *   node scripts/dry-run.mjs workflows/work-round.js --args my-args.json
+ *   node scripts/dry-run.mjs workflows/run-work-round.js
+ *   node scripts/dry-run.mjs workflows/run-work-round.js --args my-args.json
  *
  * The pretend QA tester reports one bug in round 1 and a clean pass in round 2; the pretend
  * checker reports one finding. So the fix paths are exercised too.

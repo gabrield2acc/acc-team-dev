@@ -1,5 +1,5 @@
 export const meta = {
-  name: 'work-round',
+  name: 'run-work-round',
   description: 'Developers build their areas in parallel, an integrator joins them up, then QA tests and routes bugs back until the journey passes',
   whenToUse: 'One round of team work on a project that already has a written contract or project map: called by the new-app and continue-app skills.',
   phases: [

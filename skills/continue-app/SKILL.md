@@ -29,7 +29,7 @@ what they are. Do not stash, commit or discard them.
 ## 2. Survey (changes nothing)
 
 For a small project, survey it yourself. For anything larger, call the `Workflow` tool
-with `scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/survey.js"` and:
+with `scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/run-survey.js"` and:
 
 ```json
 {
@@ -76,7 +76,7 @@ Use the branch convention the project already has (never the default branch).
 - **Several independent work items**: write a short brief
   (`${CLAUDE_PLUGIN_ROOT}/templates/BRIEF.md`; its definition of done includes "everything
   in the baseline still works") and call the `Workflow` tool with
-  `scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/work-round.js"` and:
+  `scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/run-work-round.js"` and:
 
 ```json
 {

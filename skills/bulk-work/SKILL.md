@@ -38,7 +38,7 @@ wait for a yes.
 ## 3. Run
 
 Call the `Workflow` tool with
-`scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/build-check-fix.js"` and:
+`scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/run-build-check-fix.js"` and:
 
 ```json
 {

@@ -42,7 +42,7 @@ one line and wait for a yes, unless they have already told you to run unattended
 
 ## 3. Start the team
 
-Call the `Workflow` tool with `scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/new-app.js"`
+Call the `Workflow` tool with `scriptPath: "${CLAUDE_PLUGIN_ROOT}/workflows/run-new-app.js"`
 and these `args` (a JSON object, all paths absolute):
 
 ```json
@@ -76,7 +76,7 @@ The result is the team's report, not proof.
 2. Run the type-check, the tests and the build yourself.
 3. Start the app and **walk the definition-of-done journey yourself** in a real browser, at
    phone and desktop width. Fix small things you find; for large ones, run another round
-   (the `work-round` workflow with the same args) or say so in the report.
+   (the `run-work-round` script with the same args) or say so in the report.
 4. Check the things agents get wrong: a key in the bundle or the network traffic, another
    account's data reachable by id, the limits in the brief.
 5. Commit what is uncommitted to the feature branch, push it, and open ONE pull request.

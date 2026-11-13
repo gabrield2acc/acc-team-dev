@@ -1,5 +1,5 @@
 export const meta = {
-  name: 'build-check-fix',
+  name: 'run-build-check-fix',
   description: 'For a list of similar units of work: one agent builds each, a different agent checks it by working samples by hand, and the builder fixes what was found',
   whenToUse: 'Bulk work made of many similar, independent pieces (content, data sets, generators, repeated modules), where the author must not be the only checker. Started by the bulk-work skill.',
   phases: [

@@ -1,15 +1,15 @@
 export const meta = {
-  name: 'new-app',
+  name: 'run-new-app',
   description: 'Architect designs the contract and scaffold, then developers build in parallel, an integrator joins them up, and QA tests until the journey passes',
   whenToUse: 'Building a new application from a written brief. Started by the new-app skill, which writes the brief and the list of areas first.',
   phases: [
     { title: 'Architect', detail: 'contract, ownership table, shared types, a scaffold that runs' },
-    { title: 'Team round', detail: 'build in parallel, integrate, QA and fix (the work-round workflow)' },
+    { title: 'Team round', detail: 'build in parallel, integrate, QA and fix (the run-work-round script)' },
   ],
 }
 
 /*
- * args: everything work-round takes (root, pluginRoot, brief, branch, areas, and its options), plus
+ * args: everything run-work-round takes (root, pluginRoot, brief, branch, areas, and its options), plus
  *   decisions   optional: decisions already made that the architect must not reopen
  * The areas say who builds what; the architect turns them into the ownership table and may
  * refine the directories, but not the list of areas.
@@ -53,6 +53,6 @@ const architecture = TYPES.architect
 if (!architecture) throw new Error('The architect did not finish, so there is nothing to build against.')
 
 phase('Team round')
-const round = await workflow({ scriptPath: `${PLUGIN}/workflows/work-round.js` }, { ...A, contract: CONTRACT })
+const round = await workflow({ scriptPath: `${PLUGIN}/workflows/run-work-round.js` }, { ...A, contract: CONTRACT })
 
 return { architecture, ...round }

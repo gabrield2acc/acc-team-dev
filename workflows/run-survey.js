@@ -1,5 +1,5 @@
 export const meta = {
-  name: 'survey',
+  name: 'run-survey',
   description: 'Read an existing project in parallel, one surveyor per part, and return what each found. Changes nothing.',
   whenToUse: 'The first step on a project the team has not worked on before. Started by the continue-app skill, which then writes the project map from the reports.',
   phases: [
